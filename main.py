@@ -9,10 +9,14 @@ account_sid = 'AC23891757669d832bdd5ad158c530548a'
 auth_token = token
 client = Client(account_sid, auth_token)
 
-message = client.messages.create(
-    from_='whatsapp:+14155238886',
-    body='Your appointment is coming up on July 21 at 3PM',
-    to='whatsapp:+905395740062'
-)
+while True:
+    textMessage = input("What you would like to send?: ")
+    numberToBeSent = input("Where you want to send your message?: ")
 
-print(message.sid)
+    message = client.messages.create(
+        from_='whatsapp:+14155238886',
+        body=textMessage,
+        to=f'whatsapp:{numberToBeSent}'
+    )
+
+    print(message.sid)
